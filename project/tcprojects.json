@@ -1,0 +1,110 @@
+class Character {
+    name: string;
+    race: string;
+
+    constructor(name: string, race: string) {
+        this.name = name;
+        this.race = race;
+      }
+    
+    static createRPGCharacter(): Character[] {
+      const Charcater: Character[] = [
+        new Character(name, race),
+        
+      ];
+  
+      return Character;
+    }
+  
+    
+  }
+  
+  class Character {
+    
+    addRemoveEventListeners(): void {
+      const inventoryItems = document.querySelectorAll('.item');
+  
+      inventoryItems.forEach(itemDiv => {
+        const removeOneButton = itemDiv.querySelector('.remove-one-button');
+        const removeAllButton = itemDiv.querySelector('.remove-all-button');
+  
+        if (removeOneButton) {
+          const itemName = itemDiv.querySelector('.item-name').textContent;
+  
+          
+          removeOneButton.addEventListener('click', () => {
+            const itemToRemove = this.inventory.find(item => item.name === itemName);
+            if (itemToRemove) {
+              this.removeQuantityFromInventory(itemToRemove, 1);
+              
+              this.updateInventory();
+            }
+          });
+        }
+  
+        if (removeAllButton) {
+          const itemName = itemDiv.querySelector('.item-name').textContent;
+  
+          
+          removeAllButton.addEventListener('click', () => {
+            const itemToRemove = this.inventory.find(item => item.name === itemName);
+            if (itemToRemove) {
+              this.removeFromInventory(itemToRemove);
+            
+              this.updateInventory();
+            }
+          });
+        }
+      });
+    }
+  
+
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginButton = document.getElementById('loginButton');
+  
+    loginButton.addEventListener('click', () => {
+      
+      const character = Character.createRPGCharacter('Your RPG Character', 'Elf');
+      console.log('Created RPG Character:', character);
+  
+      
+      const inventoryItems = InventoryItem.createRPGItems();
+  
+      
+      character.initializeInventory(inventoryItems);
+  
+    
+      character.updateInventory();
+    });
+  });
+
+//     - inventoryHTMLElement():
+//         - Rename this method to inventoryHTMLElement() for consistency.
+//         - Modify this method to generate and return an HTML element displaying the items in the character's inventory, including name, quantity, and any relevant details. Additionally, create buttons for removing one or all instances of each item from the inventory.
+
+//     - addRemoveEventListeners():
+//         - Modify this method to attach event listeners to the inventory's "Remove One" and "Remove All" buttons, akin to the original assignment. Utilize the RPG character's methods for removing items from the - inventory.
+
+//     - Inventory Class Methods:
+
+//     - showItems():
+//         - Develop this method to iterate through the RPG character's inventory items and append each item's itemElement to the Shop div in the HTML.
+
+//     - updateInventory():
+//         - Create this method to update the character's inventory contents and display them in the Inventory div on the HTML page. If the inventory is empty, display a message to that effect. If the inventory contains items, employ the inventoryHTMLElement method and the addRemoveEventListeners function to display the inventory's contents.
+
+//     - static createRPGItems():
+//         - Rename this method to static createRPGItems() to align with the RPG inventory context.
+//         - Modify this method to create and return an array of InventoryItem instances to populate the character's initial inventory.
+
+//     - Driver Code
+
+//     - Outside the classes, write code to run on page load, including:
+
+//         - Attaching the createRPGCharacter method to the login/create character button.
+//         - Initializing the Inventory with items using createRPGItems.
+//         - Initializing the RPG character's inventory with items using createRPGItems.
+
+//     - By adapting the original steps with RPG characters and inventories, you will establish a web page enabling users to engage with RPG characters, manage their inventories, and enjoy a customized iteration of the OOP Cart Shopping Page assignment.
